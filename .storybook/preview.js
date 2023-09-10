@@ -1,4 +1,3 @@
-import { addDecorator } from '@storybook/react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { theme } from '../src/themes'
 import * as NextImage from 'next/image'
@@ -33,12 +32,15 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 // Themeの適用
-addDecorator((story) => (
-    <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {story()}
+
+export default {
+    decorators: [(story) => (
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            {story()}
         </ThemeProvider>
-))
+    )],
+};
 
 // next/imageの差し替え
 const OriginalNextImage = NextImage.default;
