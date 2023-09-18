@@ -20,12 +20,12 @@ export default class MyDocument extends Document {
       // every component's return jsx code
       return {
         ...initialProps,
-        styles: [
+        styles: (
           <>
             {initialProps.styles}
-            {sheet.getStyleTags()}
-          </>,
-        ],
+            {sheet.getStyleElement()}
+          </>
+        ),
       }
     } finally {
       sheet.seal()
